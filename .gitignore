@@ -1,0 +1,28 @@
+# Runtime & private data — never commit
+backups/
+cache/
+downloads/
+file-history/
+ide/
+plans/
+plugins/
+session-env/
+sessions/
+shell-snapshots/
+tasks/
+telemetry/
+transcripts/
+history.jsonl
+mcp-needs-auth-cache.json
+.last-cleanup
+.DS_Store
+**/node_modules/
+
+# settings.local.json holds machine/personal overrides — keep it out of the shared template
+settings.local.json
+
+# Projects: track only memory files, not transcripts/session data
+projects/*
+!projects/*/
+projects/*/*
+!projects/*/memory/

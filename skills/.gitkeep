@@ -1,0 +1,2 @@
+# Drop your user-level skills here, one folder per skill (each with a SKILL.md).
+# bootstrap.sh symlinks every folder here into ~/.agents/skills for cross-tool sharing.
