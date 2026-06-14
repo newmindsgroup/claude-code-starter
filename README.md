@@ -1,6 +1,6 @@
 # claude-code-starter
 
-A person-agnostic starter for [Claude Code](https://claude.com/claude-code). Clone it as your `~/.claude` and every session — on every project, including subagents — starts with a strong, opinionated baseline: a working-style instruction spine, safety hooks, a portable setup script, and an optional four-pillar PR-review workflow.
+A person-agnostic starter for [Claude Code](https://claude.com/claude-code). Clone it as your `~/.claude` and every session — on every project, including subagents — starts with a strong, opinionated baseline: a working-style instruction spine, safety hooks, a portable setup script, and an optional four-pillar PR-review workflow. The spine lives in `AGENTS.md` (the cross-tool [AGENTS.md](https://agents.md/) standard), so the same instructions carry over to Codex, Cursor, and Antigravity.
 
 Built from a real production setup, stripped of all personal and company specifics. Fill in the placeholders and it's yours.
 
@@ -13,14 +13,15 @@ Built from a real production setup, stripped of all personal and company specifi
    curl -fsSL https://raw.githubusercontent.com/YOU/YOUR-REPO/main/bootstrap.sh | bash -s -- https://github.com/YOU/YOUR-REPO.git
    ```
    The script is idempotent and non-destructive — it backs up anything it would touch and adopts an existing `~/.claude` if Claude Code already created one.
-4. Open `~/.claude/CLAUDE.md`, search for `{{`, and replace every placeholder with your details. Delete sections you don't need.
+4. Open `~/.claude/AGENTS.md`, search for `{{`, and replace every placeholder with your details. Delete sections you don't need. (`CLAUDE.md` is a symlink to it.)
 5. Start a new Claude Code session.
 
 ## What's inside
 
 | File | What it does |
 |---|---|
-| `CLAUDE.md` | Your instruction spine: skill-leverage habit, qualifying-questions protocol, the four-pillar engineering mantra, look-around-the-corner, skill-worthiness radar, sequenced next steps. Edit freely. |
+| `AGENTS.md` | Your instruction spine: skill-leverage habit, qualifying-questions protocol, the four-pillar engineering mantra, proportional rigor, attribution, third-party-trust, data-handling, truthfulness/escalation, look-around-the-corner, skill-worthiness radar, sequenced next steps. Uses the cross-tool [AGENTS.md](https://agents.md/) standard, so Codex, Cursor, and Antigravity read it too. Edit freely. |
+| `CLAUDE.md` | Symlink to `AGENTS.md` — Claude Code reads this name. |
 | `settings.json` | Two safety **hooks** — a guard that blocks Claude from reading `.env`/key/credential files, and an auto-formatter that runs Prettier on edited files when available. Plus an empty permission allowlist to grow. |
 | `.gitignore` | Keeps runtime data (transcripts, sessions, caches, plugin installs) out of git — only your config and memories are tracked. |
 | `bootstrap.sh` | New-machine setup: clone/adopt `~/.claude`, link skills, print next steps. |
@@ -30,7 +31,7 @@ Built from a real production setup, stripped of all personal and company specifi
 
 ## The four pillars
 
-Every piece of code, app, or infrastructure is held to **Security · Stability · Reliability · Compliance**. These are industry best practice, not personal taste — they're the default in `CLAUDE.md` and the rubric the CI review uses. Edit them if your team's standard differs.
+Every piece of code, app, or infrastructure is held to **Security · Stability · Reliability · Compliance**. These are industry best practice, not personal taste — they're the default in `AGENTS.md` and the rubric the CI review uses. Edit them if your team's standard differs.
 
 ## Enabling the CI review (optional)
 
@@ -46,7 +47,7 @@ Also install the [Claude GitHub App](https://github.com/apps/claude) so it can p
 
 ## Customizing
 
-- **`CLAUDE.md`** — the placeholders are the minimum; add your stack conventions, repo patterns, and an optional brand/voice SSOT pointer (a commented template is included).
+- **`AGENTS.md`** — the placeholders are the minimum; add your stack conventions, repo patterns, and an optional brand/voice SSOT pointer (a commented template is included).
 - **`settings.json`** — grow `permissions.allow` to stop repeat prompts for tools you trust; tweak or remove either hook. The auto-format hook assumes Prettier — swap in your formatter.
 - **Machine-local overrides** go in `settings.local.json` (gitignored), not the tracked `settings.json`.
 - **Scheduled routines, MCP servers, plugins** are personal — add them on your machine; they aren't part of this shared template.

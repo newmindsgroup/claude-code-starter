@@ -78,7 +78,7 @@ fi
 # --- 4. Next steps ----------------------------------------------------------
 echo ""
 say "Done. Next:"
-warn "Edit \$HOME/.claude/CLAUDE.md and replace every {{PLACEHOLDER}} with your details."
+warn "Edit \$HOME/.claude/AGENTS.md and replace every {{PLACEHOLDER}} with your details."
 warn "Hooks in settings.json need 'jq' (checked) and use 'prettier' when present — harmless if absent."
 warn "If you enable the CI review workflow, add a CLAUDE_CODE_OAUTH_TOKEN or ANTHROPIC_API_KEY secret to each repo (see README)."
 say "Start a new Claude Code session to pick everything up."
