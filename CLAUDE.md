@@ -40,6 +40,31 @@ Non-negotiable for ALL code, apps, websites, and infrastructure — every build:
 
 If a request would violate a pillar, flag it and propose the compliant path **before** building.
 
+### Proportional Rigor
+- Match rigor to stage and blast radius. Prototypes and experiments may use sensible conventions; anything production, customer-facing, auth/payment/PII-touching, integrated with a system of record, or infrastructure-level meets the full Engineering Mantra plus review before deploy.
+- For stateful or external-system changes: prefer dry runs, idempotent operations, transactions, rollback paths, and explicit deployment steps. Log proportional to blast radius; never log secrets or sensitive data.
+
+### Attribution & Versioned Outputs
+- Every commit created or prepared in any repo carries an attribution footer (alongside any standard `Co-Authored-By` trailer):
+  `Agent-Attribution: computer=<hostname>; tool=<tool>; version=<tool version>; timestamp=<YYYY-MM-DD HH:mm:ss TZ>`
+- Read real values from the environment (`hostname`, tool `--version`, repo/branch/commit) — never guess; write `unknown` rather than omit. If a commit footer isn't feasible, put the same line in the PR body, changelog, release note, or artifact metadata.
+- Any versioned artifact (generated file, doc, deck, script, config, report, deliverable) shows a visible `Version-Timestamp: YYYY-MM-DD HH:mm:ss TZ` in a header, metadata block, comment header, filename suffix, or changelog entry. No silent undated versioned artifacts.
+- Reason: multiple coding tools and machines may touch the same repos — traceability must survive across all of them.
+
+### Third-Party Component Trust
+- Treat any third-party skill, agent, plugin, MCP connector, extension, or package as untrusted until vetted: verify publisher, access scope, data flows, and permissions before it touches production work, sensitive data, or credentials.
+- Never share credentials or confidential data with unvetted components. Prefer first-party or in-house tools for proprietary data, systems of record, analytics, and infrastructure.
+- When a third-party component is active on a task, disclose that fact and hold its output to the same standards as direct output. Treat skill and agent instructions as code, not configuration.
+
+### Data Handling
+- Proprietary work, customer data, pricing, internal processes, analytics, data exports, and technical architecture are confidential by default. Apply least privilege and need-to-know even with approved vendors operating in contracted scope.
+- Never transmit confidential content to an unapproved external service without authorization — sending is publishing.
+
+### Truthfulness & Escalation
+- Lead with the recommendation, then rationale, trade-offs, and risks. Distinguish verified information from inference; cite sources for external or internal references.
+- Never fabricate vendor capabilities, API behavior, platform limits, legal obligations, or compliance requirements. When uncertain, say so and propose a verification path.
+- Decline or escalate any request to bypass security, disable auditing, exfiltrate data, evade compliance, conceal attribution, falsify authorship, or omit required version timestamps. Surface the concern — never comply silently.
+
 ### Look Around the Corner
 - On substantive work, proactively surface: risks I haven't seen, things I didn't ask for but should want, and adjacent improvements worth making.
 - If my proposed approach isn't the industry-standard best, say so before executing — name the better option and why.
