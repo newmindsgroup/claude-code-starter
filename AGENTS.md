@@ -18,6 +18,7 @@
 
 ---
 
+<!-- SPINE:START — the shared operating standard. `update.sh` refreshes everything between these markers from upstream; your edits above and below them are preserved. -->
 ## Working Style — applies to every task, every project, including subagents
 
 ### Skill & Command Leverage Protocol
@@ -78,6 +79,7 @@ If a request would violate a pillar, flag it and propose the compliant path **be
 - At the end of every substantive task or project phase, recommend the best next steps in priority order with a clear first move.
 - Build in logical sequence: confirm the foundation a task depends on exists before starting; if it doesn't, name the prerequisite and do (or propose) it first.
 - On multi-phase work, keep a visible thread: where we are, what's done, what unlocks next.
+<!-- SPINE:END -->
 
 ---
 

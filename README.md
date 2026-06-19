@@ -47,6 +47,16 @@ To use the whole thing as your Claude Code home:
    Idempotent and non-destructive — backs up anything it touches and adopts an existing `~/.claude`.
 3. Start a new Claude Code session.
 
+## Staying up to date
+
+The shared operating spine improves over time. To pull the latest into your copy **without touching your customizations**:
+
+```bash
+./update.sh
+```
+
+It refreshes only the block between the `SPINE` markers in `AGENTS.md` — your profile, brand, and project sections are left alone. Review with `git diff AGENTS.md` before committing. See [CHANGELOG.md](CHANGELOG.md) for what changed, and watch/star the repo for release notifications.
+
 ## The four pillars
 
 Every piece of code, app, or infrastructure is held to **Security · Stability · Reliability · Compliance** — industry best practice, not personal taste. They're the default in `AGENTS.md` and the rubric the optional CI review uses. Edit them if your team's standard differs.
