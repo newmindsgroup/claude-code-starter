@@ -1,10 +1,10 @@
-# Claude Code — User Instructions
+# Agent Instructions
 
 <!--
-  This is your personal instruction spine for every Claude Code session, on every
-  project, including delegated subagents. Replace the {{PLACEHOLDERS}} below, delete
-  what doesn't apply, and add your own rules. Keep it high-signal — every line
-  competes for the model's attention.
+  Cross-IDE instruction spine using the AGENTS.md open standard (https://agents.md/) —
+  read natively by Claude Code, Codex, Cursor, and Antigravity, in every project and
+  by delegated subagents. Replace the {{PLACEHOLDERS}} below, delete what doesn't apply,
+  and add your own rules. Keep it high-signal — every line competes for the model's attention.
 
   Setup: search this file for `{{` and replace each token. Then delete this comment.
 -->

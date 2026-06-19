@@ -1,8 +1,8 @@
 # Provenance
 
-This starter is the **person-agnostic template** form of a personal Claude Code
-configuration maintained upstream. Changes flow **one way** — from the maintainer's
-private config into this template, genericized: no personal or brand names,
+This starter is the **person-agnostic, IDE-agnostic template** form of a personal
+cross-IDE agent configuration maintained upstream. Changes flow **one way** — from the
+maintainer's private config into this template, genericized: no personal or brand names,
 first-person "I/me" voice, generic system references, and no private skill paths.
 
 The instruction spine lives in `AGENTS.md` (the cross-tool [AGENTS.md](https://agents.md/)
