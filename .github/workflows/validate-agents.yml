@@ -1,0 +1,48 @@
+name: Validate AGENTS.md
+
+# Guards the shared operating spine: confirms the SPINE markers are balanced and all
+# required sections are present, so an edit or an `update.sh` run can't silently break it.
+# No secrets needed. Template-generated repos inherit this check automatically.
+
+on:
+  push:
+    paths: ['AGENTS.md']
+  pull_request:
+    paths: ['AGENTS.md']
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check spine markers and required sections
+        run: |
+          f=AGENTS.md
+          [ -f "$f" ] || { echo "::error::AGENTS.md not found"; exit 1; }
+          s=$(grep -c '^<!-- SPINE:START' "$f" || true)
+          e=$(grep -c '^<!-- SPINE:END' "$f" || true)
+          if [ "$s" != "1" ] || [ "$e" != "1" ]; then
+            echo "::error::Expected exactly one SPINE:START and one SPINE:END marker (found start=$s end=$e)"; exit 1
+          fi
+          miss=0
+          while IFS= read -r sec; do
+            [ -z "$sec" ] && continue
+            if ! grep -qF "$sec" "$f"; then echo "::error::Missing required spine section: $sec"; miss=1; fi
+          done <<'SECTIONS'
+          Skill & Command Leverage Protocol
+          Qualifying Questions Protocol
+          Engineering Mantra
+          Proportional Rigor
+          Attribution & Versioned Outputs
+          Third-Party Component Trust
+          Data Handling
+          Truthfulness & Escalation
+          Look Around the Corner
+          Skill-Worthiness Radar
+          Next Steps & Sequenced Building
+          SECTIONS
+          if [ "$miss" = "0" ]; then
+            echo "AGENTS.md spine valid — markers balanced, all 11 sections present."
+          fi
+          exit "$miss"
